@@ -30,4 +30,10 @@ class InstancePool:
 
     def print_status(self):
         for mi in self.m_instances:
-            print(f'ID {mi.get_id()}: {mi.get_state()}')
+            print(f'- ID {mi.get_id()}: {mi.get_state()}')
+
+    def all_instances_up(self):
+        for mi in self.m_instances:
+            if not mi.is_running():
+                return False
+        return True
