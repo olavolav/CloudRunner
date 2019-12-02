@@ -1,5 +1,2 @@
 awscli
 boto3
-
-# For testing
-mypy
