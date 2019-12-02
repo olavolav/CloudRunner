@@ -1,13 +1,9 @@
 import time
-import cloud_runner.instance_pool
+import cloud_runner.instance_pool as instance_pool
 
 start_time = time.time()
 
-pool = cloud_runner.instance_pool.InstancePool()
-
-try:
-    pool.start_instances(7)
-
+with instance_pool.InstancePool(5) as pool:
     all_up = False
     while not all_up:
         print(f'\nAfter {round(time.time() - start_time)} seconds:')
@@ -20,8 +16,5 @@ try:
     print('\nAll instances running.')
 
     print('\nTODO: Run tasks :-)')
-
-finally:
-    pool.terminate_instances()
 
 print('\nDone.')
